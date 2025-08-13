@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="CSEC Geography interactive lessons on weather, tourism and natural hazards">
+  <title>CSEC Geography Lessons - Interactive Learning</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Additional accordion styles */
+    .accordion-content {
+      display: none;
+      padding: 1.5rem;
+      border-top: 1px solid #ddd;
+      margin-top: 1rem;
+      background-color: white;
+      border-radius: 0 0 8px 8px;
+    }
+    .accordion-content.show {
+      display: block;
+    }
+    .topic-card.active {
+      background: var(--light-blue);
+    }
+    iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      margin: 1rem auto;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .topic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .topic-header i {
+      transition: transform 0.3s ease;
+    }
+    .topic-card.active .topic-header i {
+      transform: rotate(180deg);
+    }
+    .resource-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .key-point {
+      background-color: var(--light-orange);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--orange);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CSEC Geography Lessons</h1>
+    <p>Explore Key Topics for Exam Success</p>
+  </header>
+
+  <nav>
+    <a href="geohomepage.html"><i class="fas fa-home"></i> Home</a>
+    <a href="geolessons.html" class="active"><i class="fas fa-book-open"></i> Lessons</a>
+    <a href="geoquiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+    <a href="aboutgeo.html"><i class="fas fa-info-circle"></i> About</a>
+  </nav>
+
+  <div class="hero" style="padding: 2rem 1rem;">
+    <p>Click on any topic below to expand detailed lesson content. Watch videos, learn key concepts, and prepare for your exams.</p>
+  </div>
+
+  <section class="topics" id="lessons-container">
+    <!-- Weather & Climate -->
+    <div class="topic-card" id="weather-climate" onclick="toggleAccordion(this)">
+      <div class="topic-header">
+        <h3><i class="fas fa-cloud-sun" style="margin-right: 10px; color: var(--orange);"></i> Weather & Climate</h3>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <p>Study regional weather systems and hurricane formation in the Caribbean region.</p>
+      <div class="accordion-content">
+        <h4><i class="fas fa-book"></i> CSEC Syllabus Summary</h4>
+        <p>This topic examines the elements of weather (temperature, precipitation, humidity, etc.), weather instruments, factors affecting climate, and major climate types. Special focus on tropical weather systems including hurricanes, ITCZ, and anticyclones. Students should understand microclimates and the urban heat island effect.</p>
+
+        <div class="key-point">
+          <h4>Key Concepts:</h4>
+          <ul>
+            <li>Structure and formation of tropical cyclones</li>
+            <li>Factors influencing Caribbean climate (latitude, altitude, etc.)</li>
+            <li>Interpretation of climate graphs</li>
+            <li>Weather map analysis including synoptic charts</li>
+          </ul>
+        </div>
+
+        <h4><i class="fas fa-video"></i> Watch: How Hurricanes Form</h4>
+        <iframe src="https://www.youtube.com/embed/zP4rgvu4xDE" frameborder="0" allowfullscreen></iframe>
+
+        <div class="resource-links">
+          <a class="btn" href="https://www.cxc.org/examinations/csec-past-papers/" target="_blank"><i class="fas fa-file-alt"></i> View CSEC Past Papers</a>
+          <a class="btn" href="geoquiz.html#quiz-weather"><i class="fas fa-question-circle"></i> Take Weather Quiz</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tourism -->
+    <div class="topic-card" id="tourism" onclick="toggleAccordion(this)">
+      <div class="topic-header">
+        <h3><i class="fas fa-umbrella-beach" style="margin-right: 10px; color: var(--orange);"></i> Tourism</h3>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <p>How tourism shapes Caribbean economies, environments, and cultural landscape.</p>
+      <div class="accordion-content">
+        <h4><i class="fas fa-book"></i> CSEC Syllabus Summary</h4>
+        <p>Tourism is a leading economic sector in the Caribbean. Study includes types of tourism (eco, heritage, cruise, etc.), the multiplier effect, employment generation, and foreign exchange earnings. Also examines negative impacts like environmental degradation, cultural dilution, and economic leakage.</p>
+
+        <div class="key-point">
+          <h4>Key Areas:</h4>
+          <ul>
+            <li>Benefits and drawbacks of mass tourism</li>
+            <li>Sustainable tourism practices</li>
+            <li>Case studies of Caribbean tourism destinations</li>
+            <li>Government policies to manage tourism impacts</li>
+          </ul>
+        </div>
+
+        <h4><i class="fas fa-video"></i> Watch: Tourism in the Caribbean</h4>
+        <iframe src="https://www.youtube.com/embed/UZ4NBEZ9gWo" frameborder="0" allowfullscreen></iframe>
+
+        <div class="resource-links">
+          <a class="btn" href="https://www.cxc.org/examinations/csec-past-papers/" target="_blank"><i class="fas fa-file-alt"></i> View CSEC Past Papers</a>
+          <a class="btn" href="geoquiz.html#quiz-tourism"><i class="fas fa-question-circle"></i> Take Tourism Quiz</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Natural Hazards -->
+    <div class="topic-card" id="natural-hazards" onclick="toggleAccordion(this)">
+      <div class="topic-header">
+        <h3><i class="fas fa-exclamation-triangle" style="margin-right: 10px; color: var(--orange);"></i> Natural Hazards</h3>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <p>Learn about volcanoes, earthquakes, and disaster mitigation strategies.</p>
+      <div class="accordion-content">
+        <h4><i class="fas fa-book"></i> CSEC Syllabus Summary</h4>
+        <p>Focus on tectonic hazards (earthquakes, volcanoes) and climatic hazards (hurricanes, floods) affecting the Caribbean. Includes plate tectonics theory, monitoring techniques, and disaster preparedness. Case studies of recent Caribbean disasters required (e.g., Soufrière Hills eruption, Hurricane Maria).</p>
+
+        <div class="key-point">
+          <h4>Key Points:</h4>
+          <ul>
+            <li>Caribbean plate boundaries and associated hazards</li>
+            <li>Primary and secondary effects of hazards</li>
+            <li>Short-term and long-term responses</li>
+            <li>Community preparedness and CDEMA's role</li>
+          </ul>
+        </div>
+
+        <h4><i class="fas fa-video"></i> Watch: Plate Tectonics and Caribbean Hazards</h4>
+        <iframe src="https://www.youtube.com/embed/Xef9fmrwumA" frameborder="0" allowfullscreen></iframe>
+
+        <div class="resource-links">
+          <a class="btn" href="https://www.cxc.org/examinations/csec-past-papers/" target="_blank"><i class="fas fa-file-alt"></i> View CSEC Past Papers</a>
+          <a class="btn" href="geoquiz.html#quiz-natural"><i class="fas fa-question-circle"></i> Take Hazards Quiz</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" style="background-color: var(--light-orange); padding: 3rem 2rem; text-align: center; margin-top: 2rem;">
+    <h2>Ready to Test Your Knowledge?</h2>
+    <p>Now that you've studied the key topics, challenge yourself with our interactive quizzes!</p>
+    <a href="geoquiz.html" class="btn"><i class="fas fa-question-circle"></i> Take a Quiz</a>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 CSEC Geography Hub • Prototype for Computing Dissertation Project • No user data collected</p>
+      <div class="footer-links">
+        <a href="geohomepage.html">Home</a>
+        <a href="geolessons.html">Lessons</a>
+        <a href="geoquiz.html">Quiz</a>
+        <a href="aboutgeo.html">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Check if URL has a hash and open that accordion
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.location.hash) {
+        const targetCard = document.querySelector(window.location.hash);
+        if (targetCard) {
+          setTimeout(() => {
+            targetCard.scrollIntoView({ behavior: 'smooth' });
+            toggleAccordion(targetCard);
+          }, 100);
+        }
+      }
+    });
+    
+    function toggleAccordion(card) {
+      card.classList.toggle('active');
+      const content = card.querySelector('.accordion-content');
+      content.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

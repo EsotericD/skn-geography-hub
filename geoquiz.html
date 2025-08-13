@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Test your CSEC Geography knowledge with interactive quizzes">
+  <title>CSEC Geography Quiz - Test Your Knowledge</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .quiz-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .quiz-section {
+      margin-bottom: 3rem;
+      border-bottom: 2px solid var(--blue);
+      padding-bottom: 2rem;
+    }
+    
+    .quiz-section h2 {
+      color: var(--orange);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    #quiz-natural, #quiz-weather, #quiz-tourism {
+      margin-bottom: 2rem;
+    }
+    
+    .question h3 {
+      color: var(--blue);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .question button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      margin: 0.7rem 0;
+      background: var(--white);
+      border: 2px solid var(--blue);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      font-size: 1rem;
+      position: relative;
+      padding-left: 3rem;
+    }
+    
+    .question button::before {
+      content: attr(data-option);
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: var(--light-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--blue);
+    }
+    
+    .question button:hover {
+      background: var(--light-blue);
+      border-color: var(--orange);
+    }
+    
+    .quiz-controls {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .start-btn {
+      background: var(--orange);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 1rem auto;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+    }
+    
+    .start-btn:hover {
+      background: #e07e00;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .results {
+      padding: 1.5rem;
+      background: var(--light-blue);
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .results h3 {
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+    
+    .results button {
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .results button:hover {
+      background: #1a6b8b;
+      transform: translateY(-2px);
+    }
+    
+    .progress {
+      margin: 1.5rem 0;
+      font-weight: bold;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .progress-bar {
+      height: 10px;
+      background: #e0e0e0;
+      border-radius: 5px;
+      width: 200px;
+      margin: 0 10px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--blue);
+      width: 20%;
+      transition: width 0.3s ease;
+    }
+    
+    .feedback {
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .correct {
+      background: #e6f7e6;
+      border-left: 4px solid #4CAF50;
+    }
+    
+    .incorrect {
+      background: #ffebee;
+      border-left: 4px solid #f44336;
+    }
+
+    .quiz-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-left: 10px;
+      color: white;
+    }
+
+    .quiz-badge.easy {
+      background-color: #4CAF50;
+    }
+
+    .quiz-badge.medium {
+      background-color: #FFA726;
+    }
+
+    .quiz-badge.hard {
+      background-color: #F44336;
+    }
+
+    .score-display {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--blue);
+      margin: 1rem 0;
+    }
+
+    .quiz-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .quiz-nav a {
+      padding: 0.8rem 1.2rem;
+      background-color: var(--light-blue);
+      border-radius: 8px;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    .quiz-nav a:hover {
+      background-color: var(--blue);
+      color: white;
+    }
+
+    .quiz-nav a.active {
+      background-color: var(--blue);
+      color: white;
+    }
+    
+    .hidden {
+      display: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .pulse {
+      animation: pulse 1s ease infinite;
+    }
+
+    .countdown {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--orange);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CSEC Geography Quiz</h1>
+    <p>Test your knowledge on key syllabus topics</p>
+  </header>
+  
+  <nav>
+    <a href="geohomepage.html"><i class="fas fa-home"></i> Home</a>
+    <a href="geolessons.html"><i class="fas fa-book-open"></i> Lessons</a>
+    <a href="geoquiz.html" class="active"><i class="fas fa-question-circle"></i> Quiz</a>
+    <a href="aboutgeo.html"><i class="fas fa-info-circle"></i> About</a>
+  </nav>
+  
+  <div class="hero" style="padding: 2rem 1rem;">
+    <p>Select a quiz topic below and test your knowledge of CSEC Geography. Each quiz has 5 questions to help you prepare for your exams.</p>
+    <div class="quiz-nav">
+      <a href="#quiz-section-natural" class="smooth-scroll"><i class="fas fa-exclamation-triangle"></i> Natural Hazards</a>
+      <a href="#quiz-section-weather" class="smooth-scroll"><i class="fas fa-cloud-sun"></i> Weather & Climate</a>
+      <a href="#quiz-section-tourism" class="smooth-scroll"><i class="fas fa-umbrella-beach"></i> Tourism Impacts</a>
+    </div>
+  </div>
+  
+  <section class="quiz-container">
+    <!-- Natural Hazards Quiz -->
+    <div class="quiz-section" id="quiz-section-natural">
+      <h2><i class="fas fa-exclamation-triangle"></i> Natural Hazards</h2>
+      <div id="quiz-natural"></div>
+      <div class="progress" id="progress-natural">
+        <span>Question 1 of 5</span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill-natural"></div>
+        </div>
+      </div>
+      <div class="quiz-controls">
+        <button class="start-btn" id="start-natural"><i class="fas fa-play"></i> Start Natural Hazards Quiz</button>
+        <div class="results hidden" id="results-natural"></div>
+      </div>
+    </div>
+    
+    <!-- Weather & Climate Quiz -->
+    <div class="quiz-section" id="quiz-section-weather">
+      <h2><i class="fas fa-cloud-sun"></i> Weather & Climate</h2>
+      <div id="quiz-weather"></div>
+      <div class="progress" id="progress-weather">
+        <span>Question 1 of 5</span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill-weather"></div>
+        </div>
+      </div>
+      <div class="quiz-controls">
+        <button class="start-btn" id="start-weather"><i class="fas fa-play"></i> Start Weather & Climate Quiz</button>
+        <div class="results hidden" id="results-weather"></div>
+      </div>
+    </div>
+    
+    <!-- Tourism Impacts Quiz -->
+    <div class="quiz-section" id="quiz-section-tourism">
+      <h2><i class="fas fa-umbrella-beach"></i> Tourism Impacts</h2>
+      <div id="quiz-tourism"></div>
+      <div class="progress" id="progress-tourism">
+        <span>Question 1 of 5</span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill-tourism"></div>
+        </div>
+      </div>
+      <div class="quiz-controls">
+        <button class="start-btn" id="start-tourism"><i class="fas fa-play"></i> Start Tourism Impacts Quiz</button>
+        <div class="results hidden" id="results-tourism"></div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta" style="background-color: var(--light-blue); padding: 3rem 2rem; text-align: center; margin-top: 2rem;">
+    <h2>Need More Study Material?</h2>
+    <p>Check out our detailed lessons to get a better understanding of each topic.</p>
+    <a href="geolessons.html" class="btn"><i class="fas fa-book-open"></i> View Lessons</a>
+  </section>
+  
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 CSEC Geography Hub • Prototype for Computing Dissertation Project • No user data collected</p>
+      <div class="footer-links">
+        <a href="geohomepage.html">Home</a>
+        <a href="geolessons.html">Lessons</a>
+        <a href="geoquiz.html">Quiz</a>
+        <a href="aboutgeo.html">About</a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Quiz data for all three topics
+    const quizzes = {
+      natural: {
+        title: "Natural Hazards",
+        questions: [
+          {
+            question: "Which plate boundary is responsible for most earthquakes in the Caribbean?",
+            options: [
+              "Divergent boundary",
+              "Convergent boundary (Caribbean and North American plates)",
+              "Transform boundary",
+              "Hotspot"
+            ],
+            answer: 1,
+            explanation: "The Caribbean sits on a small plate bordered by the North American plate to the north and east. The subduction of the North American plate beneath the Caribbean plate at this convergent boundary causes most earthquakes in the region."
+          },
+          {
+            question: "What is the name of the scale used to measure earthquake intensity?",
+            options: [
+              "Richter scale",
+              "Beaufort scale",
+              "Saffir-Simpson scale",
+              "Mercalli scale"
+            ],
+            answer: 3,
+            explanation: "The Modified Mercalli Intensity Scale measures the effects of an earthquake at different locations, while the Richter scale measures the energy released at the source."
+          },
+          {
+            question: "Which of these is NOT a primary effect of a volcanic eruption?",
+            options: [
+              "Pyroclastic flows",
+              "Lahars (mudflows)",
+              "Tsunamis",
+              "Global cooling from ash in atmosphere"
+            ],
+            answer: 3,
+            explanation: "Global cooling is a secondary effect caused by volcanic ash reflecting sunlight back into space. Primary effects are the immediate consequences like pyroclastic flows and lahars."
+          },
+          {
+            question: "What is the most effective long-term strategy for reducing volcanic risk?",
+            options: [
+              "Evacuation drills",
+              "Land-use zoning",
+              "Building reinforced shelters",
+              "Insurance programs"
+            ],
+            answer: 1,
+            explanation: "Land-use zoning that prevents construction in high-risk areas is the most effective long-term strategy, though it requires good geological monitoring and enforcement."
+          },
+          {
+            question: "Which Caribbean island was completely evacuated due to volcanic activity in 1995?",
+            options: [
+              "Montserrat",
+              "St. Lucia",
+              "Dominica",
+              "St. Vincent"
+            ],
+            answer: 0,
+            explanation: "The Soufrière Hills volcano on Montserrat became active in 1995, leading to the permanent evacuation of the southern half of the island including the capital Plymouth."
+          }
+        ]
+      },
+      weather: {
+        title: "Weather & Climate",
+        questions: [
+          {
+            question: "What is the primary cause of the trade winds in the Caribbean?",
+            options: [
+              "Rotation of the Earth (Coriolis effect)",
+              "Temperature differences between land and sea",
+              "High pressure systems over the Atlantic",
+              "Ocean currents in the region"
+            ],
+            answer: 0,
+            explanation: "The trade winds are caused by the Coriolis effect deflecting air moving from the subtropical high pressure towards the equatorial low pressure."
+          },
+          {
+            question: "Which instrument is used to measure atmospheric pressure?",
+            options: [
+              "Anemometer",
+              "Barometer",
+              "Hygrometer",
+              "Stevenson screen"
+            ],
+            answer: 1,
+            explanation: "A barometer measures atmospheric pressure, which is important for predicting weather changes."
+          },
+          {
+            question: "What is the ITCZ (Intertropical Convergence Zone)?",
+            options: [
+              "A permanent high pressure zone",
+              "The boundary between trade winds from both hemispheres",
+              "An area of constant hurricanes",
+              "A cold ocean current"
+            ],
+            answer: 1,
+            explanation: "The ITCZ is where northeast and southeast trade winds converge, causing uplift of warm moist air and frequent rainfall."
+          },
+          {
+            question: "Which factor most influences the temperature range in coastal Caribbean areas?",
+            options: [
+              "Altitude",
+              "Ocean currents",
+              "Distance from the equator",
+              "Urban development"
+            ],
+            answer: 1,
+            explanation: "The sea has a moderating effect, keeping coastal areas cooler in the day and warmer at night compared to inland areas."
+          },
+          {
+            question: "What is the main reason hurricanes lose strength when they make landfall?",
+            options: [
+              "Decreased Coriolis effect",
+              "Lack of warm ocean water as energy source",
+              "Interaction with mountains",
+              "Increased friction with land"
+            ],
+            answer: 1,
+            explanation: "Hurricanes derive their energy from warm ocean waters, so they weaken rapidly when cut off from this heat source after landfall."
+          }
+        ]
+      },
+      tourism: {
+        title: "Tourism Impacts",
+        questions: [
+          {
+            question: "What is the main economic benefit of tourism to Caribbean countries?",
+            options: [
+              "Increased cultural exchange",
+              "Foreign currency earnings",
+              "Improved infrastructure",
+              "Environmental protection"
+            ],
+            answer: 1,
+            explanation: "Tourism brings in much-needed foreign exchange which can be used to import goods and pay foreign debts."
+          },
+          {
+            question: "Which of these is a negative environmental impact of tourism?",
+            options: [
+              "Creation of jobs",
+              "Increased demand for local crafts",
+              "Beach erosion from hotel construction",
+              "Improved water supply systems"
+            ],
+            answer: 2,
+            explanation: "Poorly planned coastal development for tourism can lead to beach erosion and damage to coral reefs."
+          },
+          {
+            question: "What does the term 'economic leakage' refer to in tourism?",
+            options: [
+              "Money lost through poor accounting",
+              "Funds that leave the country to pay for imports and foreign ownership",
+              "Taxes collected from tourists",
+              "Wages paid to local workers"
+            ],
+            answer: 1,
+            explanation: "Economic leakage occurs when money spent by tourists leaves the country to pay for imported goods and services or profits to foreign-owned companies."
+          },
+          {
+            question: "Which type of tourism is most sustainable for small Caribbean islands?",
+            options: [
+              "Mass tourism (large resorts)",
+              "Cruise ship tourism",
+              "Ecotourism",
+              "All-inclusive package tourism"
+            ],
+            answer: 2,
+            explanation: "Ecotourism has lower environmental impact and often provides more benefits to local communities than mass tourism."
+          },
+          {
+            question: "What is one way Caribbean governments try to reduce seasonality in tourism?",
+            options: [
+              "Building larger airports",
+              "Offering summer discounts",
+              "Promoting cultural festivals in off-peak seasons",
+              "Increasing hotel taxes"
+            ],
+            answer: 2,
+            explanation: "By creating attractions like festivals outside the traditional winter season, destinations can extend their tourist season."
+          }
+        ]
+      }
+    };
+
+    // Initialize all quizzes
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeQuiz('natural');
+      initializeQuiz('weather');
+      initializeQuiz('tourism');
+      
+      // Setup smooth scrolling
+      document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          document.querySelectorAll('.quiz-nav a').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+          
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+      });
+      
+      // Check if URL has a hash and scroll to that section
+      if (window.location.hash) {
+        const targetSection = document.querySelector(window.location.hash);
+        if (targetSection) {
+          setTimeout(() => {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Activate the corresponding nav link
+            document.querySelectorAll('.quiz-nav a').forEach(link => {
+              if (link.getAttribute('href') === window.location.hash) {
+                link.classList.add('active');
+              }
+            });
+          }, 100);
+        }
+      }
+    });
+
+    function initializeQuiz(quizId) {
+      const quizData = quizzes[quizId];
+      let current = 0, score = 0;
+      const quizEl = document.getElementById(`quiz-${quizId}`);
+      const resultsEl = document.getElementById(`results-${quizId}`);
+      const progressEl = document.getElementById(`progress-${quizId}`);
+      const progressFillEl = document.getElementById(`progress-fill-${quizId}`);
+      const startBtn = document.getElementById(`start-${quizId}`);
+
+      startBtn.addEventListener('click', function() {
+        startBtn.classList.add('hidden');
+        resultsEl.classList.add('hidden');
+        showQuestion();
+      });
+
+      function showQuestion() {
+        if (current >= quizData.questions.length) return showResults();
+        
+        // Update progress
+        const progressText = `Question ${current+1} of ${quizData.questions.length}`;
+        progressEl.querySelector('span').textContent = progressText;
+        const progressPercent = ((current) / quizData.questions.length) * 100;
+        progressFillEl.style.width = `${progressPercent}%`;
+        
+        const q = quizData.questions[current];
+        
+        quizEl.innerHTML = `
+          <div class="question">
+            <h3>${q.question}</h3>
+            <div>${q.options.map((o,i) => 
+              `<button onclick="selectAnswer('${quizId}', ${i})" data-option="${String.fromCharCode(65 + i)}">${o}</button>`
+            ).join('')}</div>
+          </div>
+        `;
+      }
+
+      function showResults() {
+        quizEl.innerHTML = "";
+        progressEl.style.display = 'none';
+        
+        const percentage = Math.round((score / quizData.questions.length) * 100);
+        let message, badgeClass;
+        
+        if (percentage >= 80) {
+          message = "Excellent! You have mastered this topic.";
+          badgeClass = "easy";
+        }
+        else if (percentage >= 60) {
+          message = "Good work! Review some areas to improve.";
+          badgeClass = "medium";
+        }
+        else {
+          message = "Keep studying! Review the lesson and try again.";
+          badgeClass = "hard";
+        }
+        
+        resultsEl.innerHTML = `
+          <h3>${quizData.title} Quiz Complete!</h3>
+          <div class="score-display">${score} out of ${quizData.questions.length} <span class="quiz-badge ${badgeClass}">${percentage}%</span></div>
+          <p>${message}</p>
+          <button onclick="resetQuiz('${quizId}')"><i class="fas fa-redo"></i> Try Again</button>
+        `;
+        resultsEl.classList.remove('hidden');
+      }
+
+      window[`selectAnswer_${quizId}`] = function(index) {
+        const q = quizData.questions[current];
+        const optionButtons = document.querySelectorAll(`#quiz-${quizId} button`);
+        
+        // Disable all buttons to prevent multiple selections
+        optionButtons.forEach(btn => {
+          btn.disabled = true;
+        });
+        
+        if (index === q.answer) {
+          score++;
+          quizEl.innerHTML += `<div class="feedback correct">
+            <p><i class="fas fa-check-circle"></i> Correct!</p>
+            <p>${q.explanation}</p>
+            <div class="countdown">Next question in <span id="timer-${quizId}">5</span> seconds</div>
+          </div>`;
+          optionButtons[index].style.borderColor = '#4CAF50';
+          optionButtons[index].style.backgroundColor = '#e6f7e6';
+        } else {
+          quizEl.innerHTML += `<div class="feedback incorrect">
+            <p><i class="fas fa-times-circle"></i> Incorrect!</p>
+            <p>The correct answer is: ${q.options[q.answer]}</p>
+            <p>${q.explanation}</p>
+            <div class="countdown">Next question in <span id="timer-${quizId}">5</span> seconds</div>
+          </div>`;
+          optionButtons[index].style.borderColor = '#f44336';
+          optionButtons[index].style.backgroundColor = '#ffebee';
+          optionButtons[q.answer].style.borderColor = '#4CAF50';
+          optionButtons[q.answer].style.backgroundColor = '#e6f7e6';
+        }
+        
+        // Countdown timer
+        let timeLeft = 5;
+        const timerId = setInterval(() => {
+          timeLeft--;
+          const timerElement = document.getElementById(`timer-${quizId}`);
+          if (timerElement) timerElement.textContent = timeLeft;
+          if (timeLeft <= 0) {
+            clearInterval(timerId);
+            current++;
+            showQuestion();
+          }
+        }, 1000);
+      };
+
+      window[`resetQuiz_${quizId}`] = function() {
+        current = 0; 
+        score = 0;
+        resultsEl.classList.add('hidden');
+        progressEl.style.display = 'block';
+        startBtn.classList.remove('hidden');
+        quizEl.innerHTML = "";
+        progressEl.querySelector('span').textContent = `Question 1 of ${quizData.questions.length}`;
+        progressFillEl.style.width = "0%";
+      };
+    }
+
+    // Global functions for button clicks
+    function selectAnswer(quizId, index) {
+      window[`selectAnswer_${quizId}`](index);
+    }
+
+    function resetQuiz(quizId) {
+      window[`resetQuiz_${quizId}`]();
+    }
+  </script>
+</body>
+</html>

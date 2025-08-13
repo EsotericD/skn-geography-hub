@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="CSEC Geography Hub - Interactive learning platform for Caribbean geography students">
+  <title>CSEC Geography Hub - Interactive Learning Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>CSEC Geography Hub</h1>
+    <p>Explore. Learn. Succeed.</p>
+  </header>
+
+  <nav>
+    <a href="geohomepage.html" class="active"><i class="fas fa-home"></i> Home</a>
+    <a href="geolessons.html"><i class="fas fa-book-open"></i> Lessons</a>
+    <a href="geoquiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+    <a href="aboutgeo.html"><i class="fas fa-info-circle"></i> About</a>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Welcome to the CSEC Geography Learning Platform 🌍</h2>
+      <p>Master your geography topics through interactive lessons and quizzes designed specifically for Caribbean students.</p>
+      <a class="btn" href="geolessons.html"><i class="fas fa-play"></i> Start Learning</a>
+    </div>
+  </section>
+
+  <section class="objectives">
+    <div class="container">
+      <h2>What You Will Learn</h2>
+      <ul>
+        <li>Understand the causes and impacts of natural hazards in the Caribbean region</li>
+        <li>Explore how weather systems affect St. Kitts and the wider Caribbean</li>
+        <li>Analyze the role of tourism in Caribbean economies and environments</li>
+        <li>Develop critical thinking skills for CSEC Geography exam success</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="topics">
+    <div class="topic-card">
+      <i class="fas fa-volcano fa-3x" style="color: var(--orange); margin-bottom: 1rem;"></i>
+      <h3>Natural Hazards</h3>
+      <p>Discover hurricanes, earthquakes, volcanoes, and how they affect our Caribbean islands.</p>
+      <a href="geolessons.html#natural-hazards" class="btn">Learn More</a>
+    </div>
+    <div class="topic-card">
+      <i class="fas fa-cloud-sun fa-3x" style="color: var(--orange); margin-bottom: 1rem;"></i>
+      <h3>Weather & Climate</h3>
+      <p>Learn about Caribbean weather patterns, climate zones, and meteorological instruments.</p>
+      <a href="geolessons.html#weather-climate" class="btn">Learn More</a>
+    </div>
+    <div class="topic-card">
+      <i class="fas fa-umbrella-beach fa-3x" style="color: var(--orange); margin-bottom: 1rem;"></i>
+      <h3>Tourism</h3>
+      <p>Study how tourism shapes our economy, culture, and natural environment throughout the region.</p>
+      <a href="geolessons.html#tourism" class="btn">Learn More</a>
+    </div>
+  </section>
+
+  <section class="cta" style="background-color: var(--light-blue); padding: 3rem 2rem; text-align: center; margin-top: 2rem;">
+    <h2>Ready to Test Your Knowledge?</h2>
+    <p>Challenge yourself with our interactive quizzes designed to prepare you for the CSEC Geography exam.</p>
+    <a href="geoquiz.html" class="btn"><i class="fas fa-question-circle"></i> Take a Quiz</a>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 CSEC Geography Hub • Prototype for Computing Dissertation Project • No user data collected</p>
+      <div class="footer-links">
+        <a href="geohomepage.html">Home</a>
+        <a href="geolessons.html">Lessons</a>
+        <a href="geoquiz.html">Quiz</a>
+        <a href="aboutgeo.html">About</a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Add smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="About the CSEC Geography Hub learning platform">
+  <title>About CSEC Geography Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .about-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .feature-card {
+      background: var(--light-blue);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    
+    .about-hero {
+      background: linear-gradient(to right, var(--light-blue), var(--light-orange));
+      padding: 3rem 2rem;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .about-hero h2 {
+      margin-bottom: 1rem;
+      color: var(--blue);
+    }
+    
+    .team-section {
+      margin: 3rem 0;
+      text-align: center;
+    }
+    
+    .divider {
+      height: 4px;
+      background: linear-gradient(to right, var(--blue), var(--orange));
+      width: 80px;
+      margin: 2rem auto;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>About This Platform</h1>
+    <p>Learn more about our CSEC Geography learning tool</p>
+  </header>
+  
+  <nav>
+    <a href="geohomepage.html"><i class="fas fa-home"></i> Home</a>
+    <a href="geolessons.html"><i class="fas fa-book-open"></i> Lessons</a>
+    <a href="geoquiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+    <a href="aboutgeo.html" class="active"><i class="fas fa-info-circle"></i> About</a>
+  </nav>
+  
+  <section class="about-container">
+    <div class="about-hero">
+      <i class="fas fa-globe-americas fa-3x" style="color: var(--blue); margin-bottom: 1rem;"></i>
+      <h2>CSEC Geography Hub</h2>
+      <p>This platform is built to support students preparing for the CSEC Geography examination with interactive learning resources.</p>
+    </div>
+    
+    <div class="content">
+      <h2>Our Mission</h2>
+      <p>CSEC Geography Hub aims to provide accessible, engaging, and comprehensive study materials for Caribbean students. We focus on key syllabus topics to help you succeed in your examinations.</p>
+      
+      <div class="divider"></div>
+      
+      <h2>Platform Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <h3>Structured Lessons</h3>
+          <p>Clear, concise content aligned with the official CXC syllabus requirements</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-question-circle"></i>
+          </div>
+          <h3>Interactive Quizzes</h3>
+          <p>Test your knowledge with topic-specific quizzes designed to mirror exam questions</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-video"></i>
+          </div>
+          <h3>Video Resources</h3>
+          <p>Visual learning aids to help you understand complex geographical concepts</p>
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <h2>Based on Official Syllabus</h2>
+      <p>All content on this platform is designed according to the Caribbean Examinations Council (CXC) official CSEC Geography syllabus. The topics covered focus on natural systems, human systems, and global interactions relevant to the Caribbean context.</p>
+      
+      <div class="divider"></div>
+      
+      <div class="team-section">
+        <h2>About the Project</h2>
+        <p>This website was developed as part of a computing dissertation project to create accessible educational resources for Caribbean students. It serves as a prototype to demonstrate how interactive web technologies can enhance geographic education.</p>
+        <p><strong>Note:</strong> This is a prototype platform. No user data is collected or stored.</p>
+      </div>
+      
+      <div class="cta" style="text-align: center; margin-top: 3rem;">
+        <h3>Ready to start learning?</h3>
+        <a href="geolessons.html" class="btn"><i class="fas fa-book-open"></i> Explore Lessons</a>
+        <a href="geoquiz.html" class="btn"><i class="fas fa-question-circle"></i> Try a Quiz</a>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 CSEC Geography Hub • Prototype for Computing Dissertation Project • No user data collected</p>
+      <div class="footer-links">
+        <a href="geohomepage.html">Home</a>
+        <a href="geolessons.html">Lessons</a>
+        <a href="geoquiz.html">Quiz</a>
+        <a href="aboutgeo.html">About</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
