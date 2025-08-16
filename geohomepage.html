@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="CSEC Geography Hub - Interactive learning platform for Caribbean geography students">
+  <title>CSEC Geography Hub - Interactive Learning Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Skip Navigation Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header role="banner">
+    <h1>CSEC Geography Hub</h1>
+    <p>Explore. Learn. Succeed.</p>
+  </header>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="geohomepage.html" class="active" aria-current="page">
+      <i class="fas fa-home" aria-hidden="true"></i> 
+      <span>Home</span>
+    </a>
+    <a href="geolessons.html">
+      <i class="fas fa-book-open" aria-hidden="true"></i> 
+      <span>Lessons</span>
+    </a>
+    <a href="geoquiz.html">
+      <i class="fas fa-question-circle" aria-hidden="true"></i> 
+      <span>Quiz</span>
+    </a>
+    <a href="aboutgeo.html">
+      <i class="fas fa-info-circle" aria-hidden="true"></i> 
+      <span>About</span>
+    </a>
+  </nav>
+
+  <main id="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <h2 id="hero-heading">Welcome to the CSEC Geography Learning Platform <span role="img" aria-label="Earth globe">🌍</span></h2>
+        <p>Master your geography topics through interactive lessons and quizzes designed specifically for Caribbean students.</p>
+        <a class="btn" href="geolessons.html" aria-describedby="start-learning-desc">
+          <i class="fas fa-play" aria-hidden="true"></i> 
+          <span>Start Learning</span>
+        </a>
+        <div id="start-learning-desc" class="sr-only">Begin your CSEC Geography studies with interactive lessons</div>
+      </div>
+    </section>
+
+    <section class="objectives" aria-labelledby="objectives-heading">
+      <div class="container">
+        <h2 id="objectives-heading">What You Will Learn</h2>
+        <ul>
+          <li>Understand the causes and impacts of natural hazards in the Caribbean region</li>
+          <li>Explore how weather systems affect St. Kitts and the wider Caribbean</li>
+          <li>Analyze the role of tourism in Caribbean economies and environments</li>
+          <li>Develop critical thinking skills for CSEC Geography exam success</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topics" aria-labelledby="topics-heading">
+      <h2 id="topics-heading" class="sr-only">Learning Topics</h2>
+      
+      <article class="topic-card" role="article">
+        <i class="fas fa-volcano fa-3x" style="color: var(--orange); margin-bottom: 1rem;" aria-hidden="true"></i>
+        <h3>Natural Hazards</h3>
+        <p>Discover hurricanes, earthquakes, volcanoes, and how they affect our Caribbean islands.</p>
+        <a href="geolessons.html#natural-hazards" class="btn" aria-describedby="natural-hazards-desc">
+          Learn More
+        </a>
+        <div id="natural-hazards-desc" class="sr-only">Learn about natural hazards affecting the Caribbean region</div>
+      </article>
+      
+      <article class="topic-card" role="article">
+        <i class="fas fa-cloud-sun fa-3x" style="color: var(--orange); margin-bottom: 1rem;" aria-hidden="true"></i>
+        <h3>Weather & Climate</h3>
+        <p>Learn about Caribbean weather patterns, climate zones, and meteorological instruments.</p>
+        <a href="geolessons.html#weather-climate" class="btn" aria-describedby="weather-climate-desc">
+          Learn More
+        </a>
+        <div id="weather-climate-desc" class="sr-only">Study weather patterns and climate in the Caribbean</div>
+      </article>
+      
+      <article class="topic-card" role="article">
+        <i class="fas fa-umbrella-beach fa-3x" style="color: var(--orange); margin-bottom: 1rem;" aria-hidden="true"></i>
+        <h3>Tourism</h3>
+        <p>Study how tourism shapes our economy, culture, and natural environment throughout the region.</p>
+        <a href="geolessons.html#tourism" class="btn" aria-describedby="tourism-desc">
+          Learn More
+        </a>
+        <div id="tourism-desc" class="sr-only">Explore tourism impacts in the Caribbean region</div>
+      </article>
+    </section>
+
+    <section class="cta" style="background-color: var(--light-blue); padding: 3rem 2rem; text-align: center; margin-top: 2rem;" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Ready to Test Your Knowledge?</h2>
+      <p>Challenge yourself with our interactive quizzes designed to prepare you for the CSEC Geography exam.</p>
+      <a href="geoquiz.html" class="btn" aria-describedby="quiz-desc">
+        <i class="fas fa-question-circle" aria-hidden="true"></i> 
+        <span>Take a Quiz</span>
+      </a>
+      <div id="quiz-desc" class="sr-only">Test your geography knowledge with interactive quizzes</div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <p>&copy; 2025 CSEC Geography Hub • Prototype for Computing Dissertation Project • No user data collected</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="geohomepage.html">Home</a>
+        <a href="geolessons.html">Lessons</a>
+        <a href="geoquiz.html">Quiz</a>
+        <a href="aboutgeo.html">About</a>
+      </nav>
+    </div>
+  </footer>
+  
+  <script>
+    // Add smooth scrolling with keyboard support
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+          // Set focus to target for keyboard users
+          target.setAttribute('tabindex', '-1');
+          target.focus();
+        }
+      });
+    });
+
+    // Enhanced keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      // Skip link functionality
+      if (e.key === 'Tab' && !e.shiftKey) {
+        const skipLink = document.querySelector('.skip-link');
+        if (document.activeElement === skipLink) {
+          skipLink.style.display = 'block';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -32,7 +32,7 @@
       transition: all 0.3s ease;
     }
     
-    .feature-card:hover {
+    .feature-card:hover, .feature-card:focus-within {
       transform: translateY(-5px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
@@ -71,88 +71,119 @@
   </style>
 </head>
 <body>
-  <header>
+  <!-- Skip Navigation Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header role="banner">
     <h1>About This Platform</h1>
     <p>Learn more about our CSEC Geography learning tool</p>
   </header>
   
-  <nav>
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="geolessons.html"><i class="fas fa-book-open"></i> Lessons</a>
-    <a href="geoquiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
-    <a href="aboutgeo.html" class="active"><i class="fas fa-info-circle"></i> About</a>
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="geohomepage.html">
+      <i class="fas fa-home" aria-hidden="true"></i> 
+      <span>Home</span>
+    </a>
+    <a href="geolessons.html">
+      <i class="fas fa-book-open" aria-hidden="true"></i> 
+      <span>Lessons</span>
+    </a>
+    <a href="geoquiz.html">
+      <i class="fas fa-question-circle" aria-hidden="true"></i> 
+      <span>Quiz</span>
+    </a>
+    <a href="aboutgeo.html" class="active" aria-current="page">
+      <i class="fas fa-info-circle" aria-hidden="true"></i> 
+      <span>About</span>
+    </a>
   </nav>
   
-  <section class="about-container">
-    <div class="about-hero">
-      <i class="fas fa-globe-americas fa-3x" style="color: var(--blue); margin-bottom: 1rem;"></i>
-      <h2>CSEC Geography Hub</h2>
-      <p>This platform is built to support students preparing for the CSEC Geography examination with interactive learning resources.</p>
-    </div>
-    
-    <div class="content">
-      <h2>Our Mission</h2>
-      <p>CSEC Geography Hub aims to provide accessible, engaging, and comprehensive study materials for Caribbean students. We focus on key syllabus topics to help you succeed in your examinations.</p>
+  <main id="main-content" role="main">
+    <section class="about-container">
+      <div class="about-hero" role="banner">
+        <i class="fas fa-globe-americas fa-3x" style="color: var(--blue); margin-bottom: 1rem;" aria-hidden="true"></i>
+        <h2>CSEC Geography Hub</h2>
+        <p>This platform is built to support students preparing for the CSEC Geography examination with interactive learning resources.</p>
+      </div>
       
-      <div class="divider"></div>
-      
-      <h2>Platform Features</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-book-open"></i>
-          </div>
-          <h3>Structured Lessons</h3>
-          <p>Clear, concise content aligned with the official CXC syllabus requirements</p>
-        </div>
+      <div class="content">
+        <section aria-labelledby="mission-heading">
+          <h2 id="mission-heading">Our Mission</h2>
+          <p>CSEC Geography Hub aims to provide accessible, engaging, and comprehensive study materials for Caribbean students. We focus on key syllabus topics to help you succeed in your examinations.</p>
+        </section>
         
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-question-circle"></i>
-          </div>
-          <h3>Interactive Quizzes</h3>
-          <p>Test your knowledge with topic-specific quizzes designed to mirror exam questions</p>
-        </div>
+        <div class="divider" role="presentation"></div>
         
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-video"></i>
+        <section aria-labelledby="features-heading">
+          <h2 id="features-heading">Platform Features</h2>
+          <div class="feature-grid" role="list">
+            <article class="feature-card" role="listitem">
+              <div class="feature-icon" aria-hidden="true">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <h3>Structured Lessons</h3>
+              <p>Clear, concise content aligned with the official CXC syllabus requirements</p>
+            </article>
+            
+            <article class="feature-card" role="listitem">
+              <div class="feature-icon" aria-hidden="true">
+                <i class="fas fa-question-circle"></i>
+              </div>
+              <h3>Interactive Quizzes</h3>
+              <p>Test your knowledge with topic-specific quizzes designed to mirror exam questions</p>
+            </article>
+            
+            <article class="feature-card" role="listitem">
+              <div class="feature-icon" aria-hidden="true">
+                <i class="fas fa-video"></i>
+              </div>
+              <h3>Video Resources</h3>
+              <p>Visual learning aids to help you understand complex geographical concepts</p>
+            </article>
           </div>
-          <h3>Video Resources</h3>
-          <p>Visual learning aids to help you understand complex geographical concepts</p>
-        </div>
+        </section>
+        
+        <div class="divider" role="presentation"></div>
+        
+        <section aria-labelledby="syllabus-heading">
+          <h2 id="syllabus-heading">Based on Official Syllabus</h2>
+          <p>All content on this platform is designed according to the Caribbean Examinations Council (CXC) official CSEC Geography syllabus. The topics covered focus on natural systems, human systems, and global interactions relevant to the Caribbean context.</p>
+        </section>
+        
+        <div class="divider" role="presentation"></div>
+        
+        <section class="team-section" aria-labelledby="project-heading">
+          <h2 id="project-heading">About the Project</h2>
+          <p>This website was developed as part of a computing dissertation project to create accessible educational resources for Caribbean students. It serves as a prototype to demonstrate how interactive web technologies can enhance geographic education.</p>
+          <p><strong>Note:</strong> This is a prototype platform. No user data is collected or stored.</p>
+        </section>
+        
+        <section class="cta" style="text-align: center; margin-top: 3rem;" aria-labelledby="cta-heading">
+          <h3 id="cta-heading">Ready to start learning?</h3>
+          <a href="geolessons.html" class="btn" aria-describedby="lessons-desc">
+            <i class="fas fa-book-open" aria-hidden="true"></i> 
+            <span>Explore Lessons</span>
+          </a>
+          <a href="geoquiz.html" class="btn" aria-describedby="quiz-desc">
+            <i class="fas fa-question-circle" aria-hidden="true"></i> 
+            <span>Try a Quiz</span>
+          </a>
+          <div id="lessons-desc" class="sr-only">Browse available geography lessons</div>
+          <div id="quiz-desc" class="sr-only">Test your knowledge with interactive quizzes</div>
+        </section>
       </div>
-      
-      <div class="divider"></div>
-      
-      <h2>Based on Official Syllabus</h2>
-      <p>All content on this platform is designed according to the Caribbean Examinations Council (CXC) official CSEC Geography syllabus. The topics covered focus on natural systems, human systems, and global interactions relevant to the Caribbean context.</p>
-      
-      <div class="divider"></div>
-      
-      <div class="team-section">
-        <h2>About the Project</h2>
-        <p>This website was developed as part of a computing dissertation project to create accessible educational resources for Caribbean students. It serves as a prototype to demonstrate how interactive web technologies can enhance geographic education.</p>
-        <p><strong>Note:</strong> This is a prototype platform. No user data is collected or stored.</p>
-      </div>
-      
-      <div class="cta" style="text-align: center; margin-top: 3rem;">
-        <h3>Ready to start learning?</h3>
-        <a href="geolessons.html" class="btn"><i class="fas fa-book-open"></i> Explore Lessons</a>
-        <a href="geoquiz.html" class="btn"><i class="fas fa-question-circle"></i> Try a Quiz</a>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
   
-  <footer>
+  <footer role="contentinfo">
     <div class="footer-content">
       <p>&copy; 2025 CSEC Geography Hub • Prototype for Computing Dissertation Project • No user data collected</p>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="geohomepage.html">Home</a>
         <a href="geolessons.html">Lessons</a>
         <a href="geoquiz.html">Quiz</a>
         <a href="aboutgeo.html">About</a>
-      </div>
+      </nav>
     </div>
   </footer>
 </body>
